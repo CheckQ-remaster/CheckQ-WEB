@@ -25,3 +25,8 @@ export const Label = styled.label`
     transition-duration: 0.5s;
   }
 `;
+
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+`;
