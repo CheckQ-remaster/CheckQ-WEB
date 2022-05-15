@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 // import NotFound from "./NotFound";
 
-// import Loginpage from "./components/Authentication/Loginpage";
+import Login from "../src/components/Authentication/Login/login.jsx";
 // import Joinpage from "./components/Authentication/JoinPage";
 // import Register from "./components/Register/RegisterProblem";
 import ScrollToTop from "../src/components/common/ScrollToTop";
@@ -32,9 +32,8 @@ const AppRouter = () => {
       <Routes>
         {getUserData === null ? (
           <>
-            {/* <Route path="/login" element={<Loginpage />} />
-            <Route path="/join" element={<Joinpage />} />
-            <Route path="*" element={<Redirect to={"/login"} />} /> */}
+            <Route path="/login" element={<Login />} />
+            {/* <Route path="/join" element={<Joinpage />} /> */}
           </>
         ) : (
           <>
