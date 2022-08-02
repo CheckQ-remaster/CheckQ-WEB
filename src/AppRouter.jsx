@@ -5,12 +5,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 // import NotFound from "./NotFound";
 
-import Login from "../src/components/Authentication/Login/login.jsx";
+import LoginPage from "./pages/loginPage";
+import Mainpage from "./pages/mainPage";
+import QrPage from "./pages/qrPage";
 // import Joinpage from "./components/Authentication/JoinPage";
 // import Register from "./components/Register/RegisterProblem";
 import ScrollToTop from "../src/components/common/ScrollToTop";
 
-import userData from "../src/components/common/userData";
+import { userData } from "./store/user/userData";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import axios from "axios";
@@ -32,12 +34,14 @@ const AppRouter = () => {
       <Routes>
         {getUserData === null ? (
           <>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Mainpage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/qrcode" element={<QrPage />} />   {/* 테스트 */}
             {/* <Route path="/join" element={<Joinpage />} /> */}
           </>
         ) : (
           <>
-            {/* <Route path="/" element={<Mainpage />} /> */}
+            <Route path="/" element={<Mainpage />} />
             {/* <Route path="/problems" element={<Problems />} />
             <Route path="/problem/:number" element={<Problem />} />
             <Route path="/workbook" element={<Workbooks />} />
