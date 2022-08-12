@@ -5,9 +5,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 // import NotFound from "./NotFound";
 
-import LoginPage from "./pages/loginPage";
-import Mainpage from "./pages/mainPage";
-import QrPage from "./pages/qrPage";
+import LoginPage from "./pages/Login/loginPage";
+import Mainpage from "./pages/Main/mainPage";
+import QrPage from "./pages/Qr/qrPage";
+import RegisterPage from "./pages/Register/registerPage";
 // import Joinpage from "./components/Authentication/JoinPage";
 // import Register from "./components/Register/RegisterProblem";
 import ScrollToTop from "../src/components/common/ScrollToTop";
@@ -36,6 +37,7 @@ const AppRouter = () => {
           <>
             <Route path="/" element={<Mainpage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/sign_up" element={<RegisterPage/>} />
             <Route path="/qrcode" element={<QrPage />} />   {/* 테스트 */}
             {/* <Route path="/join" element={<Joinpage />} /> */}
           </>
