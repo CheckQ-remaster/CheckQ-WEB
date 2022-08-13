@@ -1,4 +1,4 @@
-import Qr from "../../components/Qr/qr";
+import Qr from "../../components/qr/qr";
 
 const QrPage = () =>{
   return <Qr />;

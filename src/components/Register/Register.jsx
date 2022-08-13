@@ -13,7 +13,7 @@ const Register = () => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    if(password !== confirmPassword) return alert("비밀번호가 다릅니다.")
+    if(password !== confirmPassword) return alert("비밀번호가 다릅니다.");
   };
 
   return (

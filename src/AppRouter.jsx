@@ -5,12 +5,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 // import NotFound from "./NotFound";
 
-import LoginPage from "./pages/Login/loginPage";
-import Mainpage from "./pages/Main/mainPage";
-import QrPage from "./pages/Qr/qrPage";
-import RegisterPage from "./pages/Register/registerPage";
-// import Joinpage from "./components/Authentication/JoinPage";
-// import Register from "./components/Register/RegisterProblem";
+import LoginPage from "./pages/login/LoginPage";
+import HotelInfoPage from "./pages/hotelInfo/HotelInfoPage";
+import Mainpage from "./pages/main/MainPage";
+import MyReservationPage from "./pages/myReservation/MyReservationPage";
+import PaymentPage from "./pages/payment/PaymentPage";
+import QrPage from "./pages/qr/qrPage";
+import RegisterPage from "./pages/register/registerPage";
+import ReservationPage from "./pages/reservation/ReservationPage";
+import RoomInfo from "./pages/roomInfo/RoomInfoPage";
+
 import ScrollToTop from "../src/components/common/ScrollToTop";
 
 import { userData } from "./store/user/userData";
@@ -38,8 +42,18 @@ const AppRouter = () => {
             <Route path="/" element={<Mainpage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/sign_up" element={<RegisterPage/>} />
-            <Route path="/qrcode" element={<QrPage />} />   {/* 테스트 */}
-            {/* <Route path="/join" element={<Joinpage />} /> */}
+            {/* 테스트 */}
+            {/* 호텔 정보 */}
+            <Route path="/hotel" element={<HotelInfoPage/>} />
+            {/* 방 정보 */}
+            <Route path="/room" element={<RoomInfo/>} />
+            {/* 예약하기 */}
+            <Route path="/reservation" element={<ReservationPage/>} />
+            {/* 결제 */}
+            <Route path="/payment" element={<PaymentPage/>} />
+            {/* 나의 예약*/}
+            <Route path="/myPage" element={<MyReservationPage/>} />
+            <Route path="/qrcode" element={<QrPage />} />   
           </>
         ) : (
           <>
