@@ -39,10 +39,10 @@ const AppRouter = () => {
       <Routes>
         {getUserData === null ? (
           <>
-            <Route path="/" element={<Mainpage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/sign_up" element={<RegisterPage/>} />
             {/* 테스트 */}
+            <Route path="/" element={<Mainpage />} />
             {/* 호텔 정보 */}
             <Route path="/hotel" element={<HotelInfoPage/>} />
             {/* 방 정보 */}
@@ -53,6 +53,7 @@ const AppRouter = () => {
             <Route path="/payment" element={<PaymentPage/>} />
             {/* 나의 예약*/}
             <Route path="/myPage" element={<MyReservationPage/>} />
+            {/* QR */}
             <Route path="/qrcode" element={<QrPage />} />   
           </>
         ) : (

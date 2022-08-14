@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { customAxios } from "../../lib/axios/customAxios";
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -14,6 +15,15 @@ const Register = () => {
   const onSubmit = async(e) => {
     e.preventDefault();
     if(password !== confirmPassword) return alert("비밀번호가 다릅니다.");
+    await customAxios.post('/signup',{
+      name: name,
+      id: id,
+      password: password,
+    }).then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log("faild",error);
+    });
   };
 
   return (
