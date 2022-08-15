@@ -1,11 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { customAxios } from "../../lib/axios/customAxios";
+import * as R from "./Reservation.style";
 
 const Reservation = () => {
+  const [hotels, setHotels] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
+
+  const searchHandle = (e) => setSearchItem(e.target.value);
+
+  const onSearch = (searchTerm) =>{
+    setSearchItem(searchTerm);
+    console.log(searchTerm)
+  }
+
+  const getHotels = async() => {
+    await customAxios.get('')
+    .then((res) => {
+      setHotels(res.data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  };
+
+  useEffect(() => {
+    getHotels();
+  }, [])
+  
   return(
     <>
-      <h2>호텔 1</h2>
+      <h2>예약하기</h2>
+      <div>
+        <input 
+          type="text" 
+          placeholder="Search"
+          value={searchItem} 
+          onChange={searchHandle}
+        />
+        <button onClick={() => onSearch(searchItem)}>search</button>
+      </div>
+      <R.Dropdown>
+        {hotels
+          .filter((item) => {
+            const searchTerm = searchItem.toLowerCase();
+            const fullName = item.full_name.toLowerCase();
+
+            return (
+              searchTerm &&
+              fullName.startsWith(searchTerm) &&
+              fullName !== searchTerm
+            );
+          })
+          .slice(0, 10)
+          .map((item) => (
+            <div
+              onClick={() => onSearch(item.full_name)}
+              key={item.full_name}
+            >
+              {item.full_name}
+            </div>
+          ))}
+      </R.Dropdown>
+      {hotels.map((val, key) => {
+        return(
+          <div key={key}>
+
+          </div>
+        );
+      })}
     </>
-  )
+  );
 };
 
 export default Reservation;

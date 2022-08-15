@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { customAxios } from "../../lib/axios/customAxios";
+import { useNavigate } from 'react-router-dom'
+import { customAxios } from "../../../lib/axios/customAxios";
 
 const Register = () => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState('');
+  
+  const navigate = useNavigate();
 
   const onNameHandler = (e) => setName(e.target.value);
   const onIdHandler = (e) => setId(e.target.value);
@@ -20,7 +23,7 @@ const Register = () => {
       id: id,
       password: password,
     }).then((res) => {
-      console.log(res);
+      navigate('/login')
     }).catch((error) => {
       console.log("faild",error);
     });
