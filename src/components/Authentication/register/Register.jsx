@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import { customAxios } from "../../../lib/axios/customAxios";
+import { signup } from "../../../util/api/user";
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -18,7 +18,8 @@ const Register = () => {
   const onSubmit = async(e) => {
     e.preventDefault();
     if(password !== confirmPassword) return alert("비밀번호가 다릅니다.");
-    await customAxios.post('/signup',{
+    
+    signup({
       name: name,
       id: id,
       password: password,

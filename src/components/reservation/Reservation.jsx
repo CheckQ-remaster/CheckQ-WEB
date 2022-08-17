@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { customAxios } from "../../lib/axios/customAxios";
+import { getHotels } from "../../util/api/hotel";
 import * as R from "./Reservation.style";
 
 const Reservation = () => {
@@ -13,17 +13,8 @@ const Reservation = () => {
     console.log(searchTerm)
   }
 
-  const getHotels = async() => {
-    await customAxios.get('')
-    .then((res) => {
-      setHotels(res.data);
-    }).catch((error) => {
-      console.log(error);
-    });
-  };
-
   useEffect(() => {
-    getHotels();
+    getHotels(setHotels);
   }, [])
   
   return(
