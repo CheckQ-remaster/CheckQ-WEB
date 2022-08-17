@@ -14,7 +14,12 @@ const Reservation = () => {
   }
 
   useEffect(() => {
-    getHotels(setHotels);
+      getHotels()
+      .then((res)=>{
+        setHotels(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
   }, [])
   
   return(
