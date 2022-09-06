@@ -1,26 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Redirect from "../src/components/common/Redirect";
-
-// import NavBar from "./components/NavBar/NavBar";
-// import Footer from "./components/Footer/Footer";
-// import NotFound from "./NotFound";
-
-import LoginPage from "./pages/login/LoginPage";
-import HotelInfoPage from "./pages/hotelInfo/HotelInfoPage";
-import Mainpage from "./pages/main/MainPage";
-import MyReservationPage from "./pages/myReservation/MyReservationPage";
-import PaymentPage from "./pages/payment/PaymentPage";
-import QrPage from "./pages/qr/qrPage";
-import RegisterPage from "./pages/register/registerPage";
-import ReservationPage from "./pages/reservation/ReservationPage";
-import RoomInfo from "./pages/roomInfo/RoomInfoPage";
-
-import ScrollToTop from "../src/components/common/ScrollToTop";
-
 import { userData } from "./store/user/userData";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import axios from "axios";
+
+import ScrollToTop from "./components/common/ScrollToTop";
+
+import Login from "./components/Authentication/Login";
+import Register from "./components/Authentication/Register";
+import Main from "./components/Main";
+import HotelInfo from "./components/HotelInfo";
+import RoomInfo from "./components/RoomInfo";
+import Reservation from "./components/Reservation";
+import Payment from "./components/Payment";
+import MyReservation from "./components/MyReservation";
+import Qr from "./components/Qr";
 
 const AppRouter = () => {
   const [getUserData, setUserData] = useRecoilState(userData);
@@ -39,26 +33,26 @@ const AppRouter = () => {
       <Routes>
         {getUserData === null ? (
           <>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/sign_up" element={<RegisterPage/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             {/* 테스트 */}
-            <Route path="/" element={<Mainpage />} />
+            <Route path="/" element={<Main />} />
             {/* 호텔 정보 */}
-            <Route path="/hotel" element={<HotelInfoPage/>} />
+            <Route path="/hotel" element={<HotelInfo />} />
             {/* 방 정보 */}
-            <Route path="/room" element={<RoomInfo/>} />
+            <Route path="/room" element={<RoomInfo />} />
             {/* 예약하기 */}
-            <Route path="/reservation" element={<ReservationPage/>} />
+            <Route path="/reservation" element={<Reservation />} />
             {/* 결제 */}
-            <Route path="/payment" element={<PaymentPage/>} />
+            <Route path="/payment" element={<Payment />} />
             {/* 나의 예약*/}
-            <Route path="/myPage" element={<MyReservationPage/>} />
+            <Route path="/myPage" element={<MyReservation />} />
             {/* QR */}
-            <Route path="/qrcode" element={<QrPage />} />   
+            <Route path="/qrcode" element={<Qr />} />
           </>
         ) : (
           <>
-            <Route path="/" element={<Mainpage />} />
+            <Route path="/" element={<Main />} />
             {/* <Route path="/problems" element={<Problems />} />
             <Route path="/problem/:number" element={<Problem />} />
             <Route path="/workbook" element={<Workbooks />} />

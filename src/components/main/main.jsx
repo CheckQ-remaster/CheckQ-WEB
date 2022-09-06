@@ -6,8 +6,8 @@ const Main = () => {
   return (
     <>
       <h2>메인 메뉴</h2>
-      <button onClick={() => navigate('/reservation')}>예약하기</button>
-      <button onClick={() => navigate('/myPage')}>나의 예약</button>
+      <button onClick={() => navigate("/reservation")}>예약하기</button>
+      <button onClick={() => navigate("/myPage")}>나의 예약</button>
       <button>Logout</button>
     </>
   );
