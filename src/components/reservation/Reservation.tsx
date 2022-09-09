@@ -3,12 +3,12 @@ import { getHotels } from "../../util/api/hotel";
 import * as R from "./Reservation.style";
 
 const Reservation = () => {
-  const [hotels, setHotels] = useState([]);
+  const [hotels, setHotels] = useState<any[]>([]);
   const [searchItem, setSearchItem] = useState("");
 
-  const searchHandle = (e) => setSearchItem(e.target.value);
+  const searchHandle = (e:any) => setSearchItem(e.target.value);
 
-  const onSearch = (searchTerm) =>{
+  const onSearch = (searchTerm:string) =>{
     setSearchItem(searchTerm);
     console.log(searchTerm)
   }

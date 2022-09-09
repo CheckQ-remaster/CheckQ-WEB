@@ -7,14 +7,14 @@ import axios from "axios";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 import Login from "./components/Authentication/Login";
-import Register from "./components/Authentication/Register";
-import Main from "./components/Main";
-import HotelInfo from "./components/HotelInfo";
-import RoomInfo from "./components/RoomInfo";
-import Reservation from "./components/Reservation";
-import Payment from "./components/Payment";
-import MyReservation from "./components/MyReservation";
-import Qr from "./components/Qr";
+import Register from "./components/Authentication/register";
+import Main from "./components/main";
+import HotelInfo from "./components/hotelInfo";
+import RoomInfo from "./components/roomInfo";
+import Reservation from "./components/reservation";
+import Payment from "./components/payment";
+import MyReservation from "./components/myReservation";
+import Qr from "./components/qr";
 
 const AppRouter = () => {
   const [getUserData, setUserData] = useRecoilState(userData);

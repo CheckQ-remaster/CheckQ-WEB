@@ -10,12 +10,12 @@ const Register = () => {
   
   const navigate = useNavigate();
 
-  const onNameHandler = (e) => setName(e.target.value);
-  const onIdHandler = (e) => setId(e.target.value);
-  const onPasswordHandler = (e) => setPassword(e.target.value);
-  const onConfirmPassdHandler = (e) => setConfirmPassword(e.target.value);
+  const onNameHandler = (e:any) => setName(e.currentTarget.value);
+  const onIdHandler = (e:any) => setId(e.currentTarget.value);
+  const onPasswordHandler = (e:any) => setPassword(e.currentTarget.value);
+  const onConfirmPassdHandler = (e:any) => setConfirmPassword(e.currentTarget.value);
 
-  const onSubmit = async(e) => {
+  const onSubmit = async(e:any) => {
     e.preventDefault();
     if(password !== confirmPassword) return alert("비밀번호가 다릅니다.");
     

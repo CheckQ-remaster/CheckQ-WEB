@@ -1,4 +1,4 @@
-import instanse from "../../../util/axios";
+import instanse from "../../axios";
 
 export const getHotels = async() => {
   try{

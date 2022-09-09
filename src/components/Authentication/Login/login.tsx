@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as L from "./login.style";
