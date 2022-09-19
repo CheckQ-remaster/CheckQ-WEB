@@ -10,11 +10,16 @@ const Background = styled.div`
   width: 100%;
   min-height: calc(100vh - 75px);
   margin-top: 75px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
 `;
 
 const App = () => {
