@@ -6,8 +6,9 @@ import axios from "axios";
 
 import ScrollToTop from "./components/common/ScrollToTop";
 
-import Login from "./components/Authentication/Login";
+import Login from "./components/Authentication/First";
 import Register from "./components/Authentication/register";
+import First from "./components/Authentication/First";
 
 const AppRouter = () => {
   const [getUserData, setUserData] = useRecoilState(userData);
@@ -27,7 +28,7 @@ const AppRouter = () => {
         {getUserData === null ? (
           <>
             {/* <Route path="*" element={<NotFound />} /> */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<First />} />
             <Route path="/register" element={<Register />} />
           </>
         ) : (

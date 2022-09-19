@@ -20,6 +20,8 @@ const Background = styled.div`
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
+
+  box-sizing: border-box;
 `;
 
 const App = () => {
