@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as L from "./login.style";
+import QR from "../../../assets/image/Login/QrCode.png";
 
 const Login = () => {
-  return (
-    <L.Container>
-      <L.IdandPW type="id" placeholder="id를 입력하세요" />
-      <L.IdandPW type="password" placeholder="비밀번호를 입력하세요" />
-      <button>로그인</button>
-    </L.Container>
-  );
+  return <>asda</>;
 };
 
 export default Login;
