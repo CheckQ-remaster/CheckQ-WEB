@@ -25,17 +25,15 @@ const Router = () => {
     footer: false,
   });
 
-  useLayoutEffect(
-    (element) => {
-      let temp = routes.find((element) => element.path === location.pathname.split("/")[1]);
-      if (temp === undefined) {
-        temp = routes.find((element) => element.path === "*");
-      }
-      setRenderInfo(temp);
-    },
-    [location.pathname]
-  );
-
+  useLayoutEffect(() => {
+    let temp = routes.find((element) => element.path === location.pathname.split("/")[1]);
+    if (temp === undefined) {
+      temp = routes.find((element) => element.path === "*");
+    }
+    setRenderInfo(temp);
+    
+  },[location.pathname]);
+  console.log(renderInfo)
   return (
     <>
       <Content>
