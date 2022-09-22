@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "./First.style";
 import QR from "../../../assets/image/Login/QrCode.png";
-import { useRef } from "react";
 
-const Login = () => {
+const First = () => {
   const navigate = useNavigate();
 
   return (
@@ -35,4 +34,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default First;

@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import AppRouter from "./AppRouter";
-
-const AppStyle = styled.div`
-  margin-top: 75px;
-  min-height: calc(100vh - 75px);
-`;
+import { BrowserRouter } from "react-router-dom";
+import Router from "router/router";
 
 const Background = styled.div`
   width: 100%;
-  min-height: calc(100vh - 75px);
-  margin-top: 75px;
+  /* min-height: calc(100vh - 75px); */
+  /* margin-top: 75px; */
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -27,7 +24,10 @@ const Background = styled.div`
 const App = () => {
   return (
     <Background>
-      <AppRouter />
+      {/* <AppRouter /> */}
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </Background>
   );
 };
