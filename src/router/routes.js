@@ -4,14 +4,16 @@ import Reservation from "../components/Authentication/Reservation";
 import NotFound from "components/common/NotFound";
 import Login from "components/Authentication/login";
 import Home from "components/Authentication/home";
+import QrCode from "components/Authentication/qrCode";
 
 const routes = [
   { path: "", component: <First />, nav: false, footer: false },
   { path: "*", component: <NotFound />, nav: false, footer: false },
   { path: "login", component: <Login />, nav: false, footer: false },
   { path: "register", component: <Register />, nav: false, footer: false },
-  { path: "home", component: <Home />, nav: true, footer: true },
+  { path: "home", component: <Home />, nav: true, footer: false },
   { path: "reservation", component: <Reservation />, nav: true, footer: true },
+  { path: "qrcode", component: <QrCode />, nav: true, footer: true },
 ];
 
 export default routes;
