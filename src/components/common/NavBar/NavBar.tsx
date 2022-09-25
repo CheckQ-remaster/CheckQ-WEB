@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import * as N from "./NavBar.style";
 
@@ -6,6 +6,12 @@ const NavBar = () => {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(location.pathname.split('/')[1]);
   
+  useEffect(() => {
+    if(currentPage === "qrcode"){
+      setCurrentPage("my")
+    }
+  },[currentPage]);
+
   return (
     <N.Contaienr>
       <N.NavWrapper>

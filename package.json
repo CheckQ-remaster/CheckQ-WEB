@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.7.16",
+    "@types/qrcode.react": "^1.0.2",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/react-native": "~0.69.1",

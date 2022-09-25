@@ -3,19 +3,17 @@ import { useState, useLayoutEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import NavBar from "../components/common/NavBar";
-import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
 
 import routes from "./routes";
 
-const Core = styled.div`
+const Content = styled.div`
   margin-top: ${(props) => (props.nav ? "50" : "0")}px;
   width: 100%;
-  min-height: 100vh;
+  min-height: ${props => props.header ? "94.6vh" : "100vh"};
+  
   display: flex;
-`;
-
-const Content = styled.div`
-  display: flex;
+  justify-content: center;
 `;
 
 const Router = () => {
@@ -23,7 +21,7 @@ const Router = () => {
 
   const [renderInfo, setRenderInfo] = useState({
     nav: false,
-    footer: false,
+    header: false,
   });
 
   useLayoutEffect(() => {
@@ -37,17 +35,15 @@ const Router = () => {
 
   return (
     <>
-      <Content>
-        <Core>
+      {renderInfo.header && <Header />}
+        <Content header={renderInfo}>
           <Routes>
             {routes.map((element) => {
               return <Route path={element.path} element={element.component} key={element.path} />;
             })}
           </Routes>
-        </Core>
-      </Content>
+        </Content>
       {renderInfo.nav && <NavBar />}
-      {/* {renderInfo.footer ? <Footer /> : null} */}
     </>
   );
 };
