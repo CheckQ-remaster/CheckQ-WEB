@@ -2,11 +2,15 @@ import First from "../components/Authentication/First";
 import Register from "../components/Authentication/register";
 import Reservation from "../components/Authentication/Reservation";
 import NotFound from "components/common/NotFound";
+import Login from "components/Authentication/login";
+import Home from "components/Authentication/home";
 
 const routes = [
-  { path: "", component: <First />, nav: true, footer: true },
+  { path: "", component: <First />, nav: false, footer: false },
   { path: "*", component: <NotFound />, nav: false, footer: false },
+  { path: "login", component: <Login />, nav: false, footer: false },
   { path: "register", component: <Register />, nav: false, footer: false },
+  { path: "home", component: <Home />, nav: true, footer: true },
   { path: "reservation", component: <Reservation />, nav: true, footer: true },
 ];
 

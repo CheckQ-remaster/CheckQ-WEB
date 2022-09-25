@@ -11,6 +11,8 @@ const Core = styled.div`
   margin-top: ${(props) => (props.nav ? "50" : "0")}px;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  justify-contents: center;
 `;
 
 const Content = styled.div`
@@ -33,11 +35,10 @@ const Router = () => {
     setRenderInfo(temp);
     
   },[location.pathname]);
-  console.log(renderInfo)
+
   return (
     <>
       <Content>
-        {renderInfo.nav ? <NavBar /> : null}
         <Core>
           <Routes>
             {routes.map((element) => {
@@ -46,7 +47,8 @@ const Router = () => {
           </Routes>
         </Core>
       </Content>
-      {renderInfo.footer ? <Footer /> : null}
+      {renderInfo.nav && <NavBar />}
+      {/* {renderInfo.footer ? <Footer /> : null} */}
     </>
   );
 };

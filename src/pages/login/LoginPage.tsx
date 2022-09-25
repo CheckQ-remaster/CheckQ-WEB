@@ -1,7 +1,7 @@
-import First from "../../components/Authentication/First/First";
+import Login from "../../components/Authentication/login";
 
-const FirstPage = () => {
-  return <First />;
+const LoginPage = () => {
+  return <Login />;
 };
 
-export default FirstPage;
+export default LoginPage;
