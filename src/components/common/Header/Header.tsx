@@ -13,7 +13,7 @@ const Header = () => {
           <button onClick={() => navigate(-1)}>
             <img src={backImg} alt="뒤로가기" />
           </button>
-          <H.Content>스탠다드 트윈룸</H.Content>
+          <H.Content>예약</H.Content>
         </H.ContentWrapper>
       </nav>
     </H.Container>

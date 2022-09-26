@@ -5,8 +5,8 @@ import {
   ChekPersonBox,
   InputWrapper,
   ErrorMsg,
-  RegisterBtn, 
-  LoginBox
+  Btn, 
+  GoNavBox
 } from "./Register.style";
 
 
@@ -65,13 +65,13 @@ const Register = () => {
           })}/>
         </InputWrapper>
         <ErrorMsg>{errors.confirmPassword?.message}</ErrorMsg>
-        <RegisterBtn type="submit">회원가입</RegisterBtn>
+        <Btn type="submit">회원가입</Btn>
       </form>
 
-      <LoginBox>
+      <GoNavBox>
         회원이신가요?
         <a href="/login">로그인</a>
-      </LoginBox>
+      </GoNavBox>
     </Container>
   );
 };

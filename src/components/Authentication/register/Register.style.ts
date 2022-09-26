@@ -75,7 +75,7 @@ export const ErrorMsg = styled.p`
   text-align: right;
 `;
 
-export const RegisterBtn = styled.button`
+export const Btn = styled.button`
   width: 303px;
   height: 52px;
 
@@ -90,7 +90,7 @@ export const RegisterBtn = styled.button`
   color: #ffffff;
 `;
 
-export const LoginBox = styled.div`
+export const GoNavBox = styled.div`
   color: #DBDBDB;
 
   margin-top: 56px;

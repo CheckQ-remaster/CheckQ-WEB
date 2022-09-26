@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Container } from "./Login.style";
+import { Btn, InputWrapper, ErrorMsg, GoNavBox } from "../register/Register.style";
 import LoginImg from "../../../assets/image/Login/LoginImg.png";
 
 interface Inputs {
@@ -16,28 +17,29 @@ const Login = () => {
     <Container>
       <img src={LoginImg} alt="로그인"/>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <InputWrapper>
           <label>아이디</label>
           <input 
             type="text" 
             {...register('user_id', {
               required: true
             })} />
-        </div>
-        <div>
+        </InputWrapper>
+        <InputWrapper>
           <label>비밀번호</label>
           <input 
             type="password" 
             {...register('password', {
               required: true
             })} />
-        </div>
-        <button type="submit">로그인</button>
+        </InputWrapper>
+        <ErrorMsg></ErrorMsg>
+        <Btn type="submit">로그인</Btn>
       </form>
-      <div>
+      <GoNavBox>
         회원이 아니신가요?
         <a href="/register">회원가입</a>
-      </div>
+      </GoNavBox>
     </Container>
   );
 };

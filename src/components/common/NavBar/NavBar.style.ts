@@ -43,6 +43,6 @@ export const NavItem = styled.a<NavProps>`
   text-align: center;
 
   span {
-    color: ${props => props.current === props.text ? '#000000' : '#B4B4B4'};
+    color: ${({current, text}) => current === text ? '#000000' : '#B4B4B4'};
   }
 `;
