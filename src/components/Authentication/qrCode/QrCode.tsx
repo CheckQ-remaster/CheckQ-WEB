@@ -1,5 +1,5 @@
-import { QRCodeSVG } from "qrcode.react";
 import React, { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import { Container } from "./QrCode.style";
 
 const QrCode = () => {
