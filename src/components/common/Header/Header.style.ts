@@ -8,7 +8,7 @@ export const Container = styled.header`
   justify-content: center;
   align-items: center;
 
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   nav {
     width: 400px;
@@ -21,7 +21,7 @@ export const ContentWrapper = styled.div`
   button {
     cursor: pointer;
 
-    background: #FFFFFF;
+    background: #ffffff;
     border: none;
     outline: none;
   }
@@ -30,6 +30,6 @@ export const ContentWrapper = styled.div`
 export const Content = styled.h2`
   margin: 0 0 0 18px;
 
-  color: #000000
+  color: #000000;
   font-size: 24px;
 `;

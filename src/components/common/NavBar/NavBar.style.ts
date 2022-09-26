@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 interface NavProps {
-  current: string
-  text: string
+  current: string;
+  text: string;
 }
 
 export const Contaienr = styled.aside`
   width: 100%;
   height: 80px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
 
   display: flex;
@@ -43,6 +43,6 @@ export const NavItem = styled.a<NavProps>`
   text-align: center;
 
   span {
-    color: ${({current, text}) => current === text ? '#000000' : '#B4B4B4'};
+    color: ${({ current, text }) => (current === text ? "#000000" : "#B4B4B4")};
   }
 `;

@@ -8,10 +8,10 @@ import Header from "../components/common/Header";
 import routes from "./routes";
 
 const Content = styled.div`
-  margin-top: ${(props) => (props.nav ? "50" : "0")}px;
+  margin-top: ${(props) => (props.nav ? "50px" : "0px")};
   width: 100%;
-  min-height: ${props => props.header ? "94.6vh" : "100vh"};
-  
+  min-height: ${(props) => (props.header ? "94.6vh" : "100vh")};
+
   display: flex;
   justify-content: center;
 `;
@@ -30,19 +30,18 @@ const Router = () => {
       temp = routes.find((element) => element.path === "*");
     }
     setRenderInfo(temp);
-    
-  },[location.pathname]);
+  }, [location.pathname]);
 
   return (
     <>
       {renderInfo.header && <Header />}
-        <Content header={renderInfo}>
-          <Routes>
-            {routes.map((element) => {
-              return <Route path={element.path} element={element.component} key={element.path} />;
-            })}
-          </Routes>
-        </Content>
+      <Content header={renderInfo}>
+        <Routes>
+          {routes.map((element) => {
+            return <Route path={element.path} element={element.component} key={element.path} />;
+          })}
+        </Routes>
+      </Content>
       {renderInfo.nav && <NavBar />}
     </>
   );

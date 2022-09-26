@@ -1,47 +1,49 @@
 import styled from "styled-components";
+import SearchIcon from "../../../assets/image/Reservation/search.png";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  div {
-    position: relative;
+  align-items: center;
+
+  width: 100%;
+
+  input {
+    margin-top: 60px;
 
     width: 303px;
     height: 60px;
 
-    background-color: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-  }
 
-  img {
-    position: absolute;
-    top: 50%;
-    left: 24px;
-    transform: translateY(-50%);
-  }
-
-  input {
-    width: calc(100% - 62px);
-    height: 100%;
-
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
     border: none;
-    outline: none;
+    box-sizing: border-box;
 
-    padding-inline-start: 62px;
-
-    color: #B4B4B4;
+    padding-left: 24px;
     font-size: 18px;
+    line-height: 26px;
 
-    &:hover,
-    &:focus {
-      color: #000000;
+    color: #000000;
 
-      border: 1px solid #2B42BB;
+    :focus {
+      outline: 1px solid #2b42bb;
     }
+  }
+
+  input::placeholder {
+    padding-left: 38px;
+    font-size: 18px;
+    line-height: 26px;
+    color: #b4b4b4;
+
+    align-items: center;
+
+    background-image: url(${SearchIcon});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0px center;
   }
 `;

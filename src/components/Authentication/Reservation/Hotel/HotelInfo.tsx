@@ -38,7 +38,24 @@ const HotelContainer = () => {
     },
   ]);
 
-  return <S.Container>asd</S.Container>;
+  return (
+    <S.Container>
+      {HotelInfo.map((e, i) => {
+        return (
+          <S.HotelContainer key={i}>
+            <S.HotelInfo>
+              <img src={`${testHotel}`} id="hotel" />
+              <p>{e.name}</p>
+              <div>
+                <img src={`${GPS}`} id="GPS" />
+                <h3>{e.location}</h3>
+              </div>
+            </S.HotelInfo>
+          </S.HotelContainer>
+        );
+      })}
+    </S.Container>
+  );
 };
 
 export default HotelContainer;
