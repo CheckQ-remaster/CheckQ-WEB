@@ -30,27 +30,19 @@ export const NavWrapper = styled.nav`
 `;
 
 export const NavItem = styled.a<NavProps>`
+  cursor: pointer;
+
   width: 100px;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   text-decoration: none;
   text-align: center;
 
-  cursor: pointer;
-
-  div {
-    background-image: url("../../../assets/image/Icon/${props => props.current === props.text ? 'focushome' : props.text}.png");
-    
-    &:hover {
-      background-image: url("../../../assets/image/Icon/${props => 'focus' + props.text}.png");
-    }
-  }
-
   span {
     color: ${props => props.current === props.text ? '#000000' : '#B4B4B4'};
-
-    &:hover {
-      color: #000000;
-    }
   }
 `;
