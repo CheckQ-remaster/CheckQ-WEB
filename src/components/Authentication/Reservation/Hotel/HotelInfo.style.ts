@@ -21,13 +21,19 @@ export const Container = styled.div`
   } */
 `;
 
-export const HotelContainer = styled.div`
+export const HotelContainer = styled.button`
+  cursor: pointer;
+
   width: 303px;
   height: 388px;
+
+  padding: 0;
 
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
+  border: none;
+  outline: none;
 
   margin-bottom: 40px;
 `;

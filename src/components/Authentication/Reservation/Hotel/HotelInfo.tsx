@@ -38,11 +38,15 @@ const HotelContainer = () => {
     },
   ]);
 
+  const getHotelInfo = () => {
+    console.log('test')
+  };
+
   return (
     <S.Container>
       {HotelInfo.map(({img, name, location}, idx) => {
         return (
-          <S.HotelContainer key={idx}>
+          <S.HotelContainer key={idx} onClick={getHotelInfo}>
             <S.HotelInfo>
               <img src={testHotel} id="hotel" alt={name}/>
               <h2>{name}</h2>
