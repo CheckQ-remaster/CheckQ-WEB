@@ -10,7 +10,7 @@ import routes from "./routes";
 const Content = styled.div`
   margin-top: ${(props) => (props.nav ? "50px" : "0px")};
   width: 100%;
-  min-height: ${(props) => (props.header ? "94.6vh" : "100vh")};
+  min-height: ${(props) => (props.header ? "93.1vh" : "100vh")};
 
   display: flex;
   justify-content: center;

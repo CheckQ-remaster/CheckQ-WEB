@@ -1,7 +1,12 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Container } from "./Login.style";
-import { Btn, InputWrapper, ErrorMsg, GoNavBox } from "../register/Register.style";
+import {
+  InputWrapper,
+  ErrorMsg,
+  Btn,
+  GoNavBox
+} from "styles/them.style"
 import LoginImg from "../../../assets/image/Login/LoginImg.png";
 
 interface Inputs {

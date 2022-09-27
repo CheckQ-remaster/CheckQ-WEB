@@ -5,6 +5,7 @@ import NotFound from "components/common/NotFound";
 import Login from "components/Authentication/login";
 import Home from "components/Authentication/home";
 import QrCode from "components/Authentication/qrCode";
+import MyHotel from "components/Authentication/myHotel";
 
 const routes = [
   { path: "", component: <First />, nav: false, header: false },
@@ -13,6 +14,7 @@ const routes = [
   { path: "register", component: <Register />, nav: false, header: false },
   { path: "home", component: <Home />, nav: true, header: false },
   { path: "reservation", component: <Reservation />, nav: true, header: true },
+  { path: "myhotel", component: <MyHotel />, nav: true, header: true },
   { path: "qrcode", component: <QrCode />, nav: true, header: true },
 ];
 

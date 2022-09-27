@@ -2,12 +2,14 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { 
   Container,
-  ChekPersonBox,
+  ChekPersonBox
+} from "./Register.style";
+import {
   InputWrapper,
   ErrorMsg,
-  Btn, 
+  Btn,
   GoNavBox
-} from "./Register.style";
+} from "styles/them.style";
 
 
 interface Inputs {

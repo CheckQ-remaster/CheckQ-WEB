@@ -14,8 +14,6 @@ export const Container = styled.div`
   padding-top: 15px;
   box-sizing: border-box;
 
-  overflow-y: auto;
-
   /* ::-webkit-scrollbar {
     display: none;
   } */
