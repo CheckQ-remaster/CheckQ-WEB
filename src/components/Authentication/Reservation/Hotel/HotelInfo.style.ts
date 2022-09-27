@@ -33,45 +33,59 @@ export const HotelContainer = styled.div`
 `;
 
 export const HotelInfo = styled.div`
-  margin: 24px;
+  position: relative;
+
+  width: 303px;
+  height: 388px;
 
   display: flex;
   flex-direction: column;
 
-  div {
-    display: flex;
-    width: 255px;
-    height: 25px;
-
-    h3 {
-      margin: 0px 0px 0px 6px;
-
-      font-size: 18px;
-      line-height: 26px;
-
-      color: #b4b4b4;
-    }
-  }
-
-  p {
-    font-size: 24px;
-    line-height: 35px;
-    margin: 14px 0px 11px 0px;
-
-    color: #000000;
-  }
-
-  #GPS {
-    width: 24px;
-    height: 24px;
-
-    margin: 0px;
-  }
-
   #hotel {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+
     width: 255px;
     height: 255px;
-    border-radius: 15px;
+
     margin: 0px;
+
+    border-radius: 15px;
+  }
+
+  h2 {
+    position: absolute;
+    top: 294px;
+    left: 24px;
+
+    color: #000000;
+    font-size: 24px;
+    line-height: 35px;
+        
+    margin: 0;
+  }
+
+  div {
+    position: absolute;
+    top: 338px;
+    left: 24px;
+    
+    display: flex;
+
+    #GPS {
+      width: 24px;
+      height: 24px;
+
+      margin: 0px;
+    }
+
+    h3 {
+      color: #b4b4b4;
+      font-size: 18px;
+      line-height: 26px;
+      
+      margin: 0;
+    }
   }
 `;

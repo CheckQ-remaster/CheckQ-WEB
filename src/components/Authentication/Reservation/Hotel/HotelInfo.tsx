@@ -40,15 +40,15 @@ const HotelContainer = () => {
 
   return (
     <S.Container>
-      {HotelInfo.map((e, i) => {
+      {HotelInfo.map(({img, name, location}, idx) => {
         return (
-          <S.HotelContainer key={i}>
+          <S.HotelContainer key={idx}>
             <S.HotelInfo>
-              <img src={`${testHotel}`} id="hotel" />
-              <p>{e.name}</p>
+              <img src={testHotel} id="hotel" alt={name}/>
+              <h2>{name}</h2>
               <div>
-                <img src={`${GPS}`} id="GPS" />
-                <h3>{e.location}</h3>
+                <img src={GPS} id="GPS" alt="위치"/>
+                <h3>{location}</h3>
               </div>
             </S.HotelInfo>
           </S.HotelContainer>
