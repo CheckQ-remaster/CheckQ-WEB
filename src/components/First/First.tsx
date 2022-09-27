@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "./First.style";
-import QR from "../../../assets/image/Login/QrCode.png";
+import QR from "../../assets/image/Login/QrCode.png";
 
 const First = () => {
   const navigate = useNavigate();

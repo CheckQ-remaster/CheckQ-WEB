@@ -1,11 +1,11 @@
-import First from "../components/Authentication/First";
+import First from "../components/First";
 import Register from "../components/Authentication/register";
-import Reservation from "../components/Authentication/Reservation";
+import Reservation from "../components/Reservation";
 import NotFound from "components/common/NotFound";
 import Login from "components/Authentication/login";
-import Home from "components/Authentication/home";
+import Home from "components/home/Home";
 import QrCode from "components/Authentication/qrCode";
-import MyHotel from "components/Authentication/myHotel";
+import MyHotel from "components/myHotel";
 
 const routes = [
   { path: "", component: <First />, nav: false, header: false },
@@ -15,7 +15,7 @@ const routes = [
   { path: "home", component: <Home />, nav: true, header: false },
   { path: "reservation", component: <Reservation />, nav: true, header: true },
   { path: "myhotel", component: <MyHotel />, nav: true, header: true },
-  { path: "qrcode", component: <QrCode />, nav: true, header: true },
+  { path: "myreservation", component: <QrCode />, nav: true, header: true },
 ];
 
 export default routes;

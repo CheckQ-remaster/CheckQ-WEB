@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchIcon from "../../../assets/image/Reservation/search.png";
+import SearchIcon from "../../assets/image/Reservation/search.png";
 
 export const Container = styled.div`
   display: flex;

@@ -6,6 +6,7 @@ import home from "../../../assets/image/Icon/home.png";
 import my from "../../../assets/image/Icon/my.png";
 import reservation from "../../../assets/image/Icon/reservation.png";
 import logout from "../../../assets/image/Icon/logout.png";
+
 import focushome from "../../../assets/image/Icon/focushome.png";
 import focusmy from "../../../assets/image/Icon/focusmy.png";
 import focusreservation from "../../../assets/image/Icon/focusreservation.png";
@@ -13,13 +14,7 @@ import focuslogout from "../../../assets/image/Icon/focuslogout.png";
 
 const NavBar = () => {
   const location = useLocation();
-  const [currentPage, setCurrentPage] = useState(location.pathname.split('/')[1]);
-  
-  useEffect(() => {
-    if(currentPage === "qrcode"){
-      setCurrentPage("my")
-    }
-  },[currentPage]);
+  const [currentPage, setCurrentPage] = useState(location.pathname.split("/")[1]);
 
   return (
     <N.Contaienr>
@@ -36,9 +31,9 @@ const NavBar = () => {
           </div>
           <span>예약</span>
         </N.NavItem>
-        <N.NavItem current={currentPage} text={"my"} href="/">
+        <N.NavItem current={currentPage} text={"myreservation"} href="/myreservation">
           <div>
-            <img src={currentPage === "my" ? focusmy : my} alt="내 예약" />
+            <img src={currentPage === "myreservation" ? focusmy : my} alt="내 예약" />
           </div>
           <span>내 예약</span>
         </N.NavItem>

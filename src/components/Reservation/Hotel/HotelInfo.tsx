@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as S from "./HotelInfo.style";
-import GPS from "../../../../assets/image/Reservation/GPS.png";
+import GPS from "../../../assets/image/Reservation/GPS.png";
 
-import testHotel from "../../../../assets/image/Reservation/testHotel.png";
+import testHotel from "../../../assets/image/Reservation/testHotel.png";
 
 const HotelContainer = () => {
   const [HotelInfo, SetHotelInfo] = useState([
@@ -39,19 +39,19 @@ const HotelContainer = () => {
   ]);
 
   const getHotelInfo = () => {
-    console.log('test')
+    console.log("test");
   };
 
   return (
     <S.Container>
-      {HotelInfo.map(({img, name, location}, idx) => {
+      {HotelInfo.map(({ img, name, location }, idx) => {
         return (
           <S.HotelContainer key={idx} onClick={getHotelInfo}>
             <S.HotelInfo>
-              <img src={testHotel} id="hotel" alt={name}/>
+              <img src={testHotel} id="hotel" alt={name} />
               <h2>{name}</h2>
               <div>
-                <img src={GPS} id="GPS" alt="위치"/>
+                <img src={GPS} id="GPS" alt="위치" />
                 <h3>{location}</h3>
               </div>
             </S.HotelInfo>

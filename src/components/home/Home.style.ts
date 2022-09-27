@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HomeLogo from "../../../assets/image/Home/HomeLogo.png"
+import HomeLogo from "../../assets/image/Home/HomeLogo.png";
 
 export const Container = styled.div`
   display: flex;
@@ -18,14 +18,14 @@ export const Container = styled.div`
 
     margin-top: 40px;
 
-    background: #2B42BB;
+    background: #2b42bb;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
 
-    p{
+    p {
       margin-left: 22px;
 
-      color: #FFFFFF;
+      color: #ffffff;
       font-size: 18px;
       white-space: nowrap;
     }
@@ -49,7 +49,7 @@ export const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-    
+
     align-items: center;
     justify-content: center;
 
@@ -57,7 +57,7 @@ export const Container = styled.div`
     height: 221px;
     margin-top: 40px;
 
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     border: none;

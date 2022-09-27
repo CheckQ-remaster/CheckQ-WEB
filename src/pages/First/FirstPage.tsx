@@ -1,4 +1,4 @@
-import First from "../../components/Authentication/First/First";
+import First from "../../components/First/First";
 
 const FirstPage = () => {
   return <First />;
