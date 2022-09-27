@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
 
   input {
-    margin-top: 60px;
+    margin-top: 4 0px;
 
     width: 303px;
     height: 60px;

@@ -91,7 +91,7 @@ export const HotelInfo = styled.div`
       font-size: 18px;
       line-height: 26px;
       
-      margin: 0;
+      margin: 0 0 0 6px;
     }
   }
 `;
