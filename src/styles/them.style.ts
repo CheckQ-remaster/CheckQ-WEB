@@ -42,6 +42,8 @@ export const ErrorMsg = styled.p`
 `;
 
 export const Btn = styled.button`
+  cursor: pointer;
+  
   width: 303px;
   height: 52px;
 
