@@ -31,5 +31,8 @@ export const ChekPersonBox = styled.div`
     }
   }
 
-
+  .active {
+    background: #2B42BB;
+    color: #FFFFFF
+  }
 `;

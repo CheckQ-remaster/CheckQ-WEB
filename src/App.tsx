@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import Router from "router/router";
 import { GlobalStyle } from "styles/globar.style";
+import { useRecoilState } from "recoil";
+import { loginState } from "store/user/loginState";
 
 const Background = styled.div`
   width: 100%;
@@ -23,6 +26,14 @@ const Background = styled.div`
 `;
 
 const App = () => {
+  const [isLogin, setLogin] = useRecoilState(loginState);
+
+  useEffect(() => {
+    if(localStorage.getItem('access_token') && localStorage.getItem('user_id')){
+      setLogin(true);
+    }
+  }, [])
+
   return (
     <Background>
       {/* <AppRouter /> */}

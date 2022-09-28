@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Container } from "./Login.style";
 import {
@@ -8,6 +8,9 @@ import {
   GoNavBox
 } from "styles/them.style"
 import LoginImg from "../../../assets/image/Login/LoginImg.png";
+import axios from "axios";
+import { useRecoilState } from "recoil";
+import { loginState } from "store/user/loginState";
 
 interface Inputs {
   user_id: string,
@@ -15,8 +18,28 @@ interface Inputs {
 }
 
 const Login = () => {
+  const [errMsg, setErrMsg] = useState("");
+  const [isLogin, setLogin] = useRecoilState(loginState);
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  
+  const onSubmit: SubmitHandler<Inputs> = async({ user_id, password}) => {
+    await axios.post('http://10.80.162.83:8080/login', {
+      id: user_id,
+      pw: password
+    }).then((res) => {
+      setLogin(true);      
+      if (res.status === 202 && res.data) {
+        console.log(res)
+        localStorage.setItem('access_token', res.data.token);
+        localStorage.setItem('user_id', res.data.id);
+      }else {
+        console.log(res);
+      }
+    }).catch((err) => {
+      console.log("signIn Error: ", err);
+      if (err.response.status === 400) setErrMsg("아이디와 비밀번호가 일치하지 않습니다.")
+    })
+  };
 
   return (
     <Container>
@@ -38,7 +61,7 @@ const Login = () => {
               required: true
             })} />
         </InputWrapper>
-        <ErrorMsg></ErrorMsg>
+        <ErrorMsg>{errMsg}</ErrorMsg>
         <Btn type="submit">로그인</Btn>
       </form>
       <GoNavBox>

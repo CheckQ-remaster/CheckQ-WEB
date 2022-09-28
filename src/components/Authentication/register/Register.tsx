@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { 
   Container,
@@ -10,6 +10,8 @@ import {
   Btn,
   GoNavBox
 } from "styles/them.style";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 interface Inputs {
@@ -20,20 +22,38 @@ interface Inputs {
 }
 
 const Register = () => {
+  const [isPerson, setPerson] = useState(true);
+  
+  const navigate = useNavigate();
   const { register, watch, handleSubmit, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  
+  const onSubmit: SubmitHandler<Inputs> = async({user_id, name, password}) => {
+    const role = isPerson ? "" : "기업";
+
+    await axios.post('http://10.80.162.83:8080/signup', {
+        id: user_id,
+        name: name,
+        pw: password,
+        role: role
+      }).then((res) => {
+        if (res.status === 202) navigate('/login');
+      }).catch((err) => {
+        console.log("signUp Error: ", err);
+      })
+
+  };
   
   return (
     <Container>
+      <ChekPersonBox>
+        <button onClick={() => setPerson(true)} className={isPerson ? "active" : ""}>
+          개인
+        </button>
+        <button onClick={() => setPerson(false)} className={!isPerson ? "active" : ""}>
+          기업
+        </button>
+      </ChekPersonBox>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ChekPersonBox>
-          <button>
-            개인
-          </button>
-          <button>
-            기업
-          </button>
-        </ChekPersonBox>
         <InputWrapper>
           <label>이름</label>
           <input 
