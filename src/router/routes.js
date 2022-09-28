@@ -14,6 +14,7 @@ const routes = [
   { path: "register", component: <Register />, nav: false, header: false },
   { path: "home", component: <Home />, nav: true, header: false },
   { path: "reservation", component: <Reservation />, nav: true, header: true },
+  { path: "reservation/:id", component: <QrCode />, nav: true, header: true },
   { path: "myhotel", component: <MyHotel />, nav: true, header: true },
   { path: "myreservation", component: <QrCode />, nav: true, header: true },
 ];

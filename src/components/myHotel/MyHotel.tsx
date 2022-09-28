@@ -64,7 +64,7 @@ const MyHotel = () => {
         <SmallBox>
           <SInputWrapper>
             <label>체크인</label>
-            <input type="text" {...register("checkIn", {})} />
+            <input type="time" {...register("checkIn", {})} />
           </SInputWrapper>
           <SInputWrapper>
             <label>체크아웃</label>
