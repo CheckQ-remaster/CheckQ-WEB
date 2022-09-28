@@ -11,6 +11,7 @@ import LoginImg from "../../../assets/image/Login/LoginImg.png";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { loginState } from "store/user/loginState";
+import { useNavigate } from "react-router-dom";
 
 interface Inputs {
   user_id: string,
@@ -20,6 +21,7 @@ interface Inputs {
 const Login = () => {
   const [errMsg, setErrMsg] = useState("");
   const [isLogin, setLogin] = useRecoilState(loginState);
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
   
   const onSubmit: SubmitHandler<Inputs> = async({ user_id, password}) => {
@@ -29,12 +31,12 @@ const Login = () => {
     }).then((res) => {
       setLogin(true);      
       if (res.status === 202 && res.data) {
-        console.log(res)
         localStorage.setItem('access_token', res.data.token);
         localStorage.setItem('user_id', res.data.id);
       }else {
         console.log(res);
       }
+      navigate('/home');
     }).catch((err) => {
       console.log("signIn Error: ", err);
       if (err.response.status === 400) setErrMsg("아이디와 비밀번호가 일치하지 않습니다.")

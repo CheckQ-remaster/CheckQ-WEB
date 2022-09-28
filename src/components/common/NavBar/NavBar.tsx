@@ -11,11 +11,20 @@ import focushome from "../../../assets/image/Icon/focushome.png";
 import focusmy from "../../../assets/image/Icon/focusmy.png";
 import focusreservation from "../../../assets/image/Icon/focusreservation.png";
 import focuslogout from "../../../assets/image/Icon/focuslogout.png";
+import { useRecoilState } from "recoil";
+import { loginState } from "store/user/loginState";
 
 const NavBar = () => {
   const location = useLocation();
+  const [isLogin, setLogin] = useRecoilState(loginState); 
   const [currentPage, setCurrentPage] = useState(location.pathname.split("/")[1]);
 
+  const logoutHandler = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_id');
+    setLogin(false);
+  };
+  
   return (
     <N.Contaienr>
       <N.NavWrapper>
@@ -37,7 +46,7 @@ const NavBar = () => {
           </div>
           <span>내 예약</span>
         </N.NavItem>
-        <N.NavItem current={currentPage} text={"logout"} href="/">
+        <N.NavItem current={currentPage} text={"logout"} onClick={logoutHandler}>
           <div>
             <img src={currentPage === "logout" ? focuslogout : logout} alt="로그아웃" />
           </div>
