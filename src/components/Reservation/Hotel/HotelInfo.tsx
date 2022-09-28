@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./HotelInfo.style";
-import GPS from "../../../assets/image/Reservation/GPS.png";
 
+import GPS from "../../../assets/image/Reservation/GPS.png";
 import testHotel from "../../../assets/image/Reservation/testHotel.png";
 
 const HotelContainer = () => {

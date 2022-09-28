@@ -4,20 +4,59 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-top: 25px;
-  overflow-y: auto;
-
+  align-items: center;
   height: calc(100vh - 264px);
-  width: 100%;
+`;
+
+export const HotelInfo = styled.div`
+  width: 303px;
+
+  #hotel {
+    width: 303px;
+    height: 303px;
+    margin-top: 40px;
+  }
+
+  h4 {
+    margin: 28px 0px 0px 0px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+  }
+`;
+
+export const TextContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-top: 14px;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+
+    color: #b4b4b4;
+
+    margin: 0px 0px 0px 8px;
+  }
+`;
+
+export const RoomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 
   align-items: center;
-  padding-top: 15px;
-  box-sizing: border-box;
 
-  /* ::-webkit-scrollbar {
-    display: none;
-  } */
+  margin-top: 41px;
+  margin-bottom: 40px;
 `;
+
+//
 
 export const HotelContainer = styled.button`
   cursor: pointer;
@@ -36,7 +75,7 @@ export const HotelContainer = styled.button`
   margin-bottom: 40px;
 `;
 
-export const HotelInfo = styled.div`
+export const HotelRoomInfo = styled.div`
   position: relative;
 
   width: 303px;
