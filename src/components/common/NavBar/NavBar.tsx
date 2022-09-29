@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import * as N from "./NavBar.style";
 
-import home from "../../../assets/image/Icon/home.png";
-import my from "../../../assets/image/Icon/my.png";
-import reservation from "../../../assets/image/Icon/reservation.png";
-import logout from "../../../assets/image/Icon/logout.png";
-
-import focushome from "../../../assets/image/Icon/focushome.png";
-import focusmy from "../../../assets/image/Icon/focusmy.png";
-import focusreservation from "../../../assets/image/Icon/focusreservation.png";
-import focuslogout from "../../../assets/image/Icon/focuslogout.png";
 import { useRecoilState } from "recoil";
 import { loginState } from "store/user/loginState";
+
+import home from "assets/image/Icon/home.png";
+import my from "assets/image/Icon/my.png";
+import reservation from "assets/image/Icon/reservation.png";
+import logout from "assets/image/Icon/logout.png";
+import hotel from "assets/image/Icon/hotel.png";
+
+import focushome from "assets/image/Icon/focushome.png";
+import focusmy from "assets/image/Icon/focusmy.png";
+import focusreservation from "assets/image/Icon/focusreservation.png";
+import focuslogout from "assets/image/Icon/focuslogout.png";
+import focushotel from "assets/image/Icon/focushotel.png";
 
 const NavBar = () => {
   const location = useLocation();
   const [isLogin, setLogin] = useRecoilState(loginState); 
-  const [currentPage, setCurrentPage] = useState(location.pathname.split("/")[1]);
-
+  const [currentPage, setCurrentPage] = useState("");
+  
   const logoutHandler = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_id');
     setLogin(false);
+    window.location.href = '/';
   };
+
+  useEffect(() => {
+    setCurrentPage(location.pathname.split("/")[1])
+  }, [location])
   
   return (
     <N.Contaienr>
