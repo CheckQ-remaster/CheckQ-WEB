@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import * as N from "./NavBar.style";
 
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { loginState } from "store/user/loginState";
+import { userData } from "store/user/userData";
 
 import home from "assets/image/Icon/home.png";
 import my from "assets/image/Icon/my.png";
@@ -19,9 +20,10 @@ import focushotel from "assets/image/Icon/focushotel.png";
 
 const NavBar = () => {
   const location = useLocation();
-  const [isLogin, setLogin] = useRecoilState(loginState); 
+  const [isLogin, setLogin] = useRecoilState(loginState);
+  const userInfo = useRecoilValue(userData); 
   const [currentPage, setCurrentPage] = useState("");
-  
+
   const logoutHandler = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_id');
@@ -48,12 +50,23 @@ const NavBar = () => {
           </div>
           <span>예약</span>
         </N.NavItem>
+        {userInfo.data.role === "" ? (
         <N.NavItem current={currentPage} text={"myreservation"} href="/myreservation">
           <div>
             <img src={currentPage === "myreservation" ? focusmy : my} alt="내 예약" />
           </div>
           <span>내 예약</span>
         </N.NavItem>
+        )
+        :
+        (
+        <N.NavItem current={currentPage} text={"myhotel"} href="/myhotel">
+          <div>
+            <img src={currentPage === "myhotel" ? focushotel : hotel} alt="내 호텔" />
+          </div>
+          <span>내 호텔</span>
+        </N.NavItem>
+        )}
         <N.NavItem current={currentPage} text={"logout"} onClick={logoutHandler}>
           <div>
             <img src={currentPage === "logout" ? focuslogout : logout} alt="로그아웃" />

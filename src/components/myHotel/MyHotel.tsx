@@ -5,6 +5,7 @@ import { Container, SInputWrapper, SmallBox, ImgInputWrap } from "./MyHotel.styl
 
 import UploadImage from "assets/image/MyHotel/uploadImage.png";
 import AddRoom from "./addRoom/AddRoom";
+import instance from "util/axios";
 
 interface Inputs {
   hotel_name: string;
@@ -31,7 +32,40 @@ const MyHotel = () => {
   } = useForm<Inputs>();
   const hotel_image = watch("hotel_image");
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async(data) => {
+    console.log(data);
+    const hotelFormData = new FormData();
+    const roomFormData = new FormData();
+    hotelFormData.append("hotel_image", data.hotel_image);
+    roomFormData.append("room_image", data.room_image);
+
+    try {     
+      if(data.hotel_name) {
+        await instance.post('/addhotel', {
+          hotel: data.hotel_name,
+        })
+      }
+      if(data.hotel_image){
+        await instance.post('/hotel_image', {
+          body: hotelFormData
+        })
+      }
+      if(data.room_name) {
+        await instance.post('/addroom', {
+          room: data.room_name,
+          price: data.price,
+          personnel: data.people_number
+        })
+      }
+      if(data.room_image) {
+        await instance.post('/room_image', {
+          body: roomFormData
+        })
+      }
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     if (hotel_image && hotel_image.length > 0) {
