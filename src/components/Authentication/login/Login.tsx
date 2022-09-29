@@ -8,10 +8,10 @@ import {
   GoNavBox
 } from "styles/them.style"
 import LoginImg from "../../../assets/image/Login/LoginImg.png";
-import axios from "axios";
 import { useRecoilState } from "recoil";
 import { loginState } from "store/user/loginState";
 import { useNavigate } from "react-router-dom";
+import { API } from "util/axios";
 
 interface Inputs {
   user_id: string,
@@ -25,7 +25,7 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
   
   const onSubmit: SubmitHandler<Inputs> = async({ user_id, password}) => {
-    await axios.post('http://10.80.162.83:8080/login', {
+    await API.post('login', {
       id: user_id,
       pw: password
     }).then((res) => {

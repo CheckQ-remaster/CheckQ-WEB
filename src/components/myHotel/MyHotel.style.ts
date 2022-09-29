@@ -37,7 +37,7 @@ export const SInputWrapper = styled.div`
     border: none;
     outline: none;
 
-    font-size: 18px;
+    font-size: 12px;
     padding-left: 24px;
     box-sizing: border-box;
     margin-top: 8px;

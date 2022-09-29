@@ -29,18 +29,20 @@ export const NavWrapper = styled.nav`
   align-items: center;
 `;
 
-export const NavItem = styled.a<NavProps>`
+export const NavItem = styled.button<NavProps>`
   cursor: pointer;
 
   width: 100px;
   height: 100%;
 
+  background-color: #FFFFFF;
+  border: none;
+  outline: none;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  text-decoration: none;
-  text-align: center;
+  align-items: center;
 
   span {
     color: ${({ current, text }) => (current === text ? "#000000" : "#B4B4B4")};

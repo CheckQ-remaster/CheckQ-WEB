@@ -10,8 +10,8 @@ import {
   Btn,
   GoNavBox
 } from "styles/them.style";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "util/axios";
 
 
 interface Inputs {
@@ -30,7 +30,7 @@ const Register = () => {
   const onSubmit: SubmitHandler<Inputs> = async({user_id, name, password}) => {
     const role = isPerson ? "" : "기업";
 
-    await axios.post('http://10.80.162.83:8080/signup', {
+    await API.post('signup', {
         id: user_id,
         name: name,
         pw: password,

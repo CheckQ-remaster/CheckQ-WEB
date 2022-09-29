@@ -1,36 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Container } from "./QrCode.style";
+import { instance } from "util/axios";
 
 const QrCode = () => {
   const [alert, setalert] = useState(true);
-  const [randnum, setRandnum] = useState(0);
   const [qrValue, setQrValue] = useState("");
   const [startDate, setstartDate] = useState("09월 01일 12시 30분");
   const [endDate, setendDate] = useState("09월 03일 12시 30분");
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(15);
+
+  const getQrCode = async() => {
+    await instance.get(`/barcord?id=${localStorage.getItem('user_id')}`)
+    .then((res) => {
+      console.log(res)
+      setQrValue(res.data.qr);
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   useEffect(() => {
     setTimeout(() => {
-      const num = Math.floor(Math.random() * 10000000000);
-      setRandnum(num);
-      console.log(num);
-    }, 10000);
-  }, [randnum]);
+      getQrCode();
+    }, 15000);
+  }, [qrValue]);
 
   useEffect(() => {
     setTimeout(() => {
       setTime(time - 1);
 
-      if (time == 0) {
+      if (time === 0) {
         setTime(15);
       }
     }, 1000);
-  });
+  }, [time]);
+
+  useEffect(() => {
+    getQrCode();
+  }, []);
 
   return (
     <Container>
-      <QRCodeSVG value={`${randnum}`} size={303} />
+      <QRCodeSVG value={qrValue} size={303} />
       <div>
         <div className="qr_flex_end">
           <p>

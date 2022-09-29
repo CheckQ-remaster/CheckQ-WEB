@@ -5,7 +5,9 @@ import { Container, SInputWrapper, SmallBox, ImgInputWrap } from "./MyHotel.styl
 
 import UploadImage from "assets/image/MyHotel/uploadImage.png";
 import AddRoom from "./addRoom/AddRoom";
-import instance from "util/axios";
+import { instance } from "util/axios";
+import { useRecoilState } from "recoil";
+import { headState } from "store/header/headState";
 
 interface Inputs {
   hotel_name: string;
@@ -23,6 +25,7 @@ interface Inputs {
 
 const MyHotel = () => {
   const [imgPreview, setImgPreview] = useState("");
+  const [headerItem, setHeaderItem] = useRecoilState(headState);
 
   const {
     register,
@@ -36,18 +39,20 @@ const MyHotel = () => {
     console.log(data);
     const hotelFormData = new FormData();
     const roomFormData = new FormData();
-    hotelFormData.append("hotel_image", data.hotel_image);
+    hotelFormData.append("image", data.hotel_image);
     roomFormData.append("room_image", data.room_image);
-
     try {     
-      if(data.hotel_name) {
-        await instance.post('/addhotel', {
-          hotel: data.hotel_name,
-        })
-      }
+      // if(data.hotel_name) {
+      //   await instance.post('/addhotel', {
+      //     hotel: data.hotel_name,
+      //   })
+      // }
       if(data.hotel_image){
-        await instance.post('/hotel_image', {
-          body: hotelFormData
+        await instance.post('uploadimg', hotelFormData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'hotel': data.hotel_name
+          }
         })
       }
       if(data.room_name) {
@@ -58,8 +63,10 @@ const MyHotel = () => {
         })
       }
       if(data.room_image) {
-        await instance.post('/room_image', {
-          body: roomFormData
+        await instance.post('/room_image', roomFormData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         })
       }
     } catch(err) {
@@ -73,6 +80,10 @@ const MyHotel = () => {
       setImgPreview(URL.createObjectURL(file));
     }
   }, [hotel_image]);
+
+  useEffect(() => {
+    setHeaderItem('호텔 등록')
+  }, [setHeaderItem])
 
   return (
     <Container>
@@ -102,7 +113,7 @@ const MyHotel = () => {
           </SInputWrapper>
           <SInputWrapper>
             <label>체크아웃</label>
-            <input type="text" {...register("checkOut", {})} />
+            <input type="time" {...register("checkOut", {})} />
           </SInputWrapper>
         </SmallBox>
         <InputWrapper>

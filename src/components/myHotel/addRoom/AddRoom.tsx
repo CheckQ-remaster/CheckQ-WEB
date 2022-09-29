@@ -64,7 +64,7 @@ const AddRoom = ({register, watch}: any) => {
         </ImgInputWrap>
         </div>
       )}
-      <button onClick={RoomHandler}>방 추가하기</button>
+      <button type="button" onClick={RoomHandler}>방 추가하기</button>
     </Container>
   );
 };

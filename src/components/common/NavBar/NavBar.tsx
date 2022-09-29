@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as N from "./NavBar.style";
 
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -20,10 +20,12 @@ import focushotel from "assets/image/Icon/focushotel.png";
 
 const NavBar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isLogin, setLogin] = useRecoilState(loginState);
   const userInfo = useRecoilValue(userData); 
   const [currentPage, setCurrentPage] = useState("");
 
+  console.log(userInfo)
   const logoutHandler = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_id');
@@ -38,20 +40,20 @@ const NavBar = () => {
   return (
     <N.Contaienr>
       <N.NavWrapper>
-        <N.NavItem current={currentPage} text={"home"} href="/home">
+        <N.NavItem current={currentPage} text={"home"} onClick={() => navigate('/home')}>
           <div>
             <img src={currentPage === "home" ? focushome : home} alt="홈" />
           </div>
           <span>홈</span>
         </N.NavItem>
-        <N.NavItem current={currentPage} text={"reservation"} href="/reservation">
+        <N.NavItem current={currentPage} text={"reservation"} onClick={() => navigate('/reservation')}>
           <div>
             <img src={currentPage === "reservation" ? focusreservation : reservation} alt="예약" />
           </div>
           <span>예약</span>
         </N.NavItem>
-        {userInfo.data.role === "" ? (
-        <N.NavItem current={currentPage} text={"myreservation"} href="/myreservation">
+        {userInfo && userInfo.data.role === "" ? (
+        <N.NavItem current={currentPage} text={"myreservation"} onClick={() => navigate('/myreservation')}>
           <div>
             <img src={currentPage === "myreservation" ? focusmy : my} alt="내 예약" />
           </div>
@@ -60,7 +62,7 @@ const NavBar = () => {
         )
         :
         (
-        <N.NavItem current={currentPage} text={"myhotel"} href="/myhotel">
+        <N.NavItem current={currentPage} text={"myhotel"} onClick={() => navigate('/myhotel')}>
           <div>
             <img src={currentPage === "myhotel" ? focushotel : hotel} alt="내 호텔" />
           </div>
