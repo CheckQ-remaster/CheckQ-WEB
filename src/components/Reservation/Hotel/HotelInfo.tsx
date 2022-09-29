@@ -3,8 +3,11 @@ import * as S from "./HotelInfo.style";
 
 import GPS from "../../../assets/image/Reservation/GPS.png";
 import testHotel from "../../../assets/image/Reservation/testHotel.png";
+import { useNavigate } from "react-router-dom";
 
 const HotelContainer = () => {
+  const navigate = useNavigate();
+
   const [HotelInfo, SetHotelInfo] = useState([
     {
       img: "../../../assets/image/Reservation/testHotel.png",
@@ -38,15 +41,11 @@ const HotelContainer = () => {
     },
   ]);
 
-  const getHotelInfo = () => {
-    console.log("test");
-  };
-
   return (
     <S.Container>
       {HotelInfo.map(({ img, name, location }, idx) => {
         return (
-          <S.HotelContainer key={idx} onClick={getHotelInfo}>
+          <S.HotelContainer key={idx} onClick={() => navigate(`/reservation/:id`)}>
             <S.HotelInfo>
               <img src={testHotel} id="hotel" alt={name} />
               <h2>{name}</h2>

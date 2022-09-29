@@ -8,6 +8,7 @@ import QrCode from "components/Authentication/qrCode";
 import MyHotel from "components/myHotel";
 import HotelReservation from "components/HotelReservation";
 import MyHotelReservation from "components/MyHotelReservation";
+import RoomReservation from "components/RoomReservation";
 
 const routes = [
   { path: "", component: <First />, nav: false, header: false },
@@ -17,6 +18,7 @@ const routes = [
   { path: "home", component: <Home />, nav: true, header: false },
   { path: "reservation", component: <Reservation />, nav: true, header: true },
   { path: "reservation/:id", component: <HotelReservation />, nav: true, header: true },
+  { path: "reservation/:id/:room", component: <RoomReservation />, nav: true, header: true },
   { path: "myhotel", component: <MyHotel />, nav: true, header: true },
   { path: "myreservation", component: <MyHotelReservation />, nav: true, header: true },
   { path: "myreservation/:id", component: <QrCode />, nav: true, header: true },

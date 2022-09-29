@@ -7,8 +7,11 @@ import Time from "../../assets/image/Reservation/time.png";
 import Call from "../../assets/image/Reservation/call.png";
 import Men from "../../assets/image/Reservation/men.png";
 import hotelRoom from "../../assets/image/Reservation/hotelRoom1.png";
+import { useNavigate } from "react-router-dom";
 
 const HotelRservation = () => {
+  const navigate = useNavigate();
+
   const [HotelInfo, SetHotelInfo] = useState({
     img: "../../assets/image/Reservation/testHotel.png",
     name: "나인트리 프리미어 호텔 명동 2",
@@ -83,7 +86,7 @@ const HotelRservation = () => {
         <S.RoomContainer>
           {roomInfo.map(({ img, name, people }, idx) => {
             return (
-              <S.HotelContainer key={idx}>
+              <S.HotelContainer key={idx} onClick={() => navigate(`/reservation/:id/:room`)}>
                 <S.HotelRoomInfo>
                   <img src={hotelRoom} id="hotel" alt={name} />
                   <h2>{name}</h2>
