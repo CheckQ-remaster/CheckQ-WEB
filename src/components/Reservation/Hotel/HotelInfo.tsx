@@ -16,10 +16,10 @@ const HotelContainer = ({searchItem} : {searchItem : ISearchItem[]}) => {
   const [hotelname, setHotelname] = useRecoilState(hotelState);
   
   const [hotelInfo, setHotelInfo] = useState<ISearchItem[]>([]);
-  
+
   const getHotels = async() => {
     await API.get('/gethotels')
-    .then((res) => console.log(res.data.data))
+    .then((res) => setHotelInfo(res.data.data))
     .catch((err) => console.log(err))
   };
   

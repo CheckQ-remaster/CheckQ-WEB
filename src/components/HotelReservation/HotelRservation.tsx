@@ -29,42 +29,7 @@ const HotelRservation = () => {
       img: "../../assets/image/Reservation/hotelRoom1.png",
       name: "스탠다드 트윈룸",
       people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
+    }
   ]);
 
   const gethotel = async() => {

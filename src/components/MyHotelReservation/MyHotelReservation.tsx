@@ -15,37 +15,7 @@ const MyHotelReservation = () => {
       img: "../../assets/image/Reservation/hotelRoom1.png",
       hotelName: "나인트리 프리미어 호텔",
       roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      hotelName: "나인트리 프리미어 호텔",
-      roomName: "스탠다드 트윈룸",
-    },
+    }
   ]);
 
   useEffect(() => {
