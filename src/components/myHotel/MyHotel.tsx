@@ -88,13 +88,13 @@ const MyHotel = () => {
       //     personnel: data.people_number,
       //   });
       // }
-      if (data.room_image) {
-        await instance.post("/room_image", roomFormData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-      }
+      // if (data.room_image) {
+      //   await instance.post("/room_image", roomFormData, {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   });
+      // }
     } catch (err) {
       console.log(err);
     }
