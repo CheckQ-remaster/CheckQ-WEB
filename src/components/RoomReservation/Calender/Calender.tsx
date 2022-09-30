@@ -3,19 +3,13 @@ import dayjs from "dayjs";
 import * as S from "./Calender.style";
 
 const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
-  const [roomInfo, setRoomInfo] = useState([
-    {
-      img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
-    },
-  ]);
-
   const d = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [days, setDays] = useState(dayjs());
   const [start, setStart] = useState<String>(days.format("YYYY-MM-DD"));
   const [end, setEnd] = useState(days.format("YYYY-MM-DD"));
   const [toggle, setToggle] = useState(false);
+  const [dayCnt, setDayCnt] = useState(0);
+  const [money, setMoney] = useState(0);
 
   const changeToggle = () => {
     setToggle((prev) => !prev);
@@ -34,13 +28,25 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
     setEnd(`${days.get("year")}-${days.get("month") + 1}-${time}`);
   };
 
+  const countMoney = () => {
+    if (dayCnt == 0) {
+      setMoney(91200);
+    } else if (dayCnt < 0) {
+      setMoney(Math.abs(91200 * Math.abs(dayCnt)));
+    } else if (dayCnt > 0) {
+      setMoney(0);
+    }
+  };
+
   useEffect(() => {
-    console.log(start);
-    console.log(end);
+    setDayCnt(Number(start.split("-")[2]) - Number(end.split("-")[2]));
   }, [start, end]);
 
+  useEffect(() => {
+    countMoney();
+  }, [dayCnt]);
+
   const getID = (number: number) => {
-    console.log(days.get("year") + "-" + days.get("month") + "-" + (number + 1) + " + " + start);
     if (
       Number(start.split("-")[0]) === days.get("year") &&
       Number(start.split("-")[1]) === days.get("month") + 1 &&
@@ -65,10 +71,9 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
     setPeoplToggle((prev) => !prev);
   };
 
-  const reservation = async() => {
-    alert("예약에 성공하였습니다.")
+  const reservation = async () => {
+    alert("예약에 성공하였습니다.");
   };
-
 
   return (
     <>
@@ -99,7 +104,13 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
               </S.CalendarStair>
             ))}
           </S.CalenderUI>
-          <S.Check onClick={changeToggle}>확인</S.Check>
+
+          <S.CheckContaienr>
+            <p>
+              체크인 : 좌클릭 <br /> 체크아웃 : 우클릭{" "}
+            </p>
+            <button onClick={changeToggle}>확인</button>
+          </S.CheckContaienr>
         </S.Container>
       ) : (
         <>
@@ -114,10 +125,13 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
             <S.PeopleContainer>
               {peopleCnt.map((v) => {
                 return (
-                  <S.PeopleCnt key={v} onClick={() => {
-                                                  changePeopleToggle()
-                                                  setPeople(v)
-                                                }}>
+                  <S.PeopleCnt
+                    key={v}
+                    onClick={() => {
+                      changePeopleToggle();
+                      setPeople(v);
+                    }}
+                  >
                     {v}인
                   </S.PeopleCnt>
                 );
@@ -133,7 +147,7 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
       )}
       <S.totalWrap>
         <h3>총액</h3>
-        <h4>91,200원</h4>
+        <h4>{money.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</h4>
       </S.totalWrap>
       <S.ReservationBtn onClick={reservation}>예약하기</S.ReservationBtn>
     </>

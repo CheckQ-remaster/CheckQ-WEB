@@ -31,19 +31,29 @@ export const DateInfo = styled.div`
   }
 `;
 
-export const Check = styled.button`
-  margin-top: 10px;
-
+export const CheckContaienr = styled.div`
   width: 100%;
-  height: 35px;
 
-  background-color: #3b52cb;
-  color: white;
-  border-radius: 15px;
+  p {
+    margin: 10px 0px 0px 0px;
+  }
 
-  border: none;
-  cursor: pointer;
+  button {
+    margin-top: 10px;
+
+    width: 100%;
+    height: 35px;
+
+    background-color: #3b52cb;
+    color: white;
+    border-radius: 15px;
+
+    border: none;
+    cursor: pointer;
+  }
 `;
+
+export const Check = styled.button``;
 
 export const CalenderUI = styled.div`
   width: 303px;
@@ -61,7 +71,7 @@ export const CalenderUI = styled.div`
   }
 
   #end {
-    background-color: blue;
+    background-color: red;
     color: white;
     border-radius: 15px;
   }
@@ -210,11 +220,10 @@ export const totalWrap = styled.div`
 
   h4 {
     margin: 0;
-    color: #2B42BB;
+    color: #2b42bb;
     font-size: 30px;
   }
 `;
-
 
 export const ReservationBtn = styled.button`
   width: 303px;
@@ -222,12 +231,12 @@ export const ReservationBtn = styled.button`
 
   margin: 40px 0 120px 0;
 
-  background: #2B42BB;
+  background: #2b42bb;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   border: none;
   outline: none;
 
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 18px;
 `;
