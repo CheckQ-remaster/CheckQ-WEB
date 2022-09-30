@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./HotelRservation.style";
 
 import testHotel from "../../assets/image/Reservation/testHotel.png";
@@ -8,9 +8,13 @@ import Call from "../../assets/image/Reservation/call.png";
 import Men from "../../assets/image/Reservation/men.png";
 import hotelRoom from "../../assets/image/Reservation/hotelRoom1.png";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { headState } from "store/header/headState";
+import { API } from "util/axios";
 
 const HotelRservation = () => {
   const navigate = useNavigate();
+  const [headerItem, setHeaderItem] = useRecoilState(headState);
 
   const [HotelInfo, SetHotelInfo] = useState({
     img: "../../assets/image/Reservation/testHotel.png",
@@ -63,6 +67,20 @@ const HotelRservation = () => {
     },
   ]);
 
+  const gethotel = async() => {
+    await API.get(`/gethotel?hotel=${headerItem}`)
+      .then((res) => {
+        console.log(res)
+        // SetHotelInfo(res.data.data)
+        // setRoomInfo(res.data.data)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  useEffect(() => {
+    gethotel();
+  }, []);
+
   return (
     <S.Container>
       <S.HotelInfo>
@@ -86,7 +104,10 @@ const HotelRservation = () => {
         <S.RoomContainer>
           {roomInfo.map(({ img, name, people }, idx) => {
             return (
-              <S.HotelContainer key={idx} onClick={() => navigate(`/reservation/:id/:room`)}>
+              <S.HotelContainer key={idx} onClick={() => {
+                                                          setHeaderItem(name)
+                                                          navigate(`/reservation/:id/:room`)
+                                                          }}>
                 <S.HotelRoomInfo>
                   <img src={hotelRoom} id="hotel" alt={name} />
                   <h2>{name}</h2>

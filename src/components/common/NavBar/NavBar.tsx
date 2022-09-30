@@ -21,14 +21,14 @@ import focushotel from "assets/image/Icon/focushotel.png";
 const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // const [isLogin, setLogin] = useRecoilState(loginState);
-  // const userInfo = useRecoilValue(userData); 
+  const [isLogin, setLogin] = useRecoilState(loginState);
+  const userInfo = useRecoilValue(userData); 
   const [currentPage, setCurrentPage] = useState("");
 
   const logoutHandler = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_id');
-    // setLogin(false);
+    setLogin(false);
     window.location.href = '/';
   };
 
@@ -51,7 +51,7 @@ const NavBar = () => {
           </div>
           <span>예약</span>
         </N.NavItem>
-        {/* {userInfo && userInfo.data.role === "" ? (
+        {userInfo && userInfo.data.role === "" ? (
         <N.NavItem current={currentPage} text={"myreservation"} onClick={() => navigate('/myreservation')}>
           <div>
             <img src={currentPage === "myreservation" ? focusmy : my} alt="내 예약" />
@@ -67,7 +67,7 @@ const NavBar = () => {
           </div>
           <span>내 호텔</span>
         </N.NavItem>
-        )} */}
+        )}
         <N.NavItem current={currentPage} text={"logout"} onClick={logoutHandler}>
           <div>
             <img src={currentPage === "logout" ? focuslogout : logout} alt="로그아웃" />

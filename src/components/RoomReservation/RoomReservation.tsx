@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./RoomReservation.style";
 import Calender from "./Calender/Calender";
+import { useRecoilState } from "recoil";
+import { headState } from "store/header/headState";
+import { API } from "util/axios";
 
 import hotelRoom from "../../assets/image/Reservation/hotelRoom1.png";
 import men from "../../assets/image/Reservation/men.png";
+import { hotelState } from "store/hotel/hotelState";
 
 const RoomReservation = () => {
   const [roomInfo, setRoomInfo] = useState({
@@ -12,6 +16,9 @@ const RoomReservation = () => {
     people: "2",
     price: "91,200",
   });
+
+  const [headerItem, setHeaderItem] = useRecoilState(headState);
+  const [hotelname, setHotelname] = useRecoilState(hotelState);
 
   let stPeople: number[] = [];
   const makeStPeople = () => {
@@ -23,9 +30,20 @@ const RoomReservation = () => {
     console.log(stPeople);
   };
 
+  const getRoom = async() => {
+    await API.get(`/gethotelinfo?hotel=${hotelname} room=${headerItem}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+  };
+
+  
   useEffect(() => {
     makeStPeople();
   }, [roomInfo]);
+  
+  useEffect(() => {
+    getRoom();
+  }, [])
 
   return (
     <S.Container>

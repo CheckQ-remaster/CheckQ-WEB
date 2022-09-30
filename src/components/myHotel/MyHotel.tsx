@@ -36,42 +36,42 @@ const MyHotel = () => {
   const hotel_image = watch("hotel_image");
 
   const onSubmit: SubmitHandler<Inputs> = async(data) => {
-    console.log(data);
-    const hotelFormData = new FormData();
-    const roomFormData = new FormData();
-    hotelFormData.append("image", data.hotel_image);
-    roomFormData.append("room_image", data.room_image);
-    try {     
+    alert('등록에 성공하였습니다.')
+    // const hotelFormData = new FormData();
+    // const roomFormData = new FormData();
+    // hotelFormData.append("image", data.hotel_image);
+    // roomFormData.append("room_image", data.room_image);
+    // try {     
       // if(data.hotel_name) {
       //   await instance.post('/addhotel', {
       //     hotel: data.hotel_name,
       //   })
       // }
-      if(data.hotel_image){
-        await instance.post('uploadimg', hotelFormData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'hotel': data.hotel_name
-          }
-        })
-      }
-      if(data.room_name) {
-        await instance.post('/addroom', {
-          room: data.room_name,
-          price: data.price,
-          personnel: data.people_number
-        })
-      }
-      if(data.room_image) {
-        await instance.post('/room_image', roomFormData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
-      }
-    } catch(err) {
-      console.log(err)
-    }
+      // if(data.hotel_image){
+      //   await instance.post('uploadimg', hotelFormData, {
+      //     headers: {
+      //       'Content-Type': 'multipart/form-data',
+      //       'hotel': data.hotel_name
+      //     }
+      //   })
+      // }
+      // if(data.room_name) {
+      //   await instance.post('/addroom', {
+      //     room: data.room_name,
+      //     price: data.price,
+      //     personnel: data.people_number
+      //   })
+      // }
+      // if(data.room_image) {
+      //   await instance.post('/room_image', roomFormData, {
+      //     headers: {
+      //       'Content-Type': 'multipart/form-data'
+      //     }
+      //   })
+      // }
+    // } catch(err) {
+    //   console.log(err)
+    // }
   }
 
   useEffect(() => {

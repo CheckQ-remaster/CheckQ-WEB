@@ -65,6 +65,11 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
     setPeoplToggle((prev) => !prev);
   };
 
+  const reservation = async() => {
+    alert("예약에 성공하였습니다.")
+  };
+
+
   return (
     <>
       {toggle ? (
@@ -130,7 +135,7 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
         <h3>총액</h3>
         <h4>91,200원</h4>
       </S.totalWrap>
-      <S.ReservationBtn>예약하기</S.ReservationBtn>
+      <S.ReservationBtn onClick={reservation}>예약하기</S.ReservationBtn>
     </>
   );
 };

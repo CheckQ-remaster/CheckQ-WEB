@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./Reservation.style";
 import HotelContainer from "./Hotel/HotelInfo";
 import { API } from "util/axios";
-import { useRecoilState } from "recoil";
-import { headState } from "store/header/headState";
+
 
 export interface ISearchItem {
   img: string,
-  hotel: string,
+  hotelname: string,
   location: string
 }
 
 const Reservation = () => {
-  const [headerItem, setHeaderItem] = useRecoilState(headState);
   const [item, setItem] = useState('');
   const [searchItem, setSearchItem] = useState<ISearchItem[]>([]);
   
@@ -28,9 +26,6 @@ const Reservation = () => {
     }
   }
   
-  useEffect(() => {
-    setHeaderItem('예약')
-  }, [setHeaderItem])
 
   return (
     <S.Container>
