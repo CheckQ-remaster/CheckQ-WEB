@@ -81,6 +81,8 @@ export const HotelRoomInfo = styled.div`
   width: 303px;
   height: 388px;
 
+  margin-bottom: 120px;
+
   display: flex;
   flex-direction: column;
 

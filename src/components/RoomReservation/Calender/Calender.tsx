@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import * as S from "./Calender.style";
+import { instance } from "util/axios";
+import { useRecoilState } from "recoil";
+import { headState } from "store/header/headState";
+import { hotelState } from "store/hotel/hotelState";
 
-const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
+const Calender = ({ peopleCnt, roomInfo }: { peopleCnt: number[], roomInfo: string }) => {
   const d = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [days, setDays] = useState(dayjs());
   const [start, setStart] = useState<String>(days.format("YYYY-MM-DD"));
@@ -10,6 +14,9 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
   const [toggle, setToggle] = useState(false);
   const [dayCnt, setDayCnt] = useState(0);
   const [money, setMoney] = useState(0);
+
+  const [headerItem, setHeaderItem] = useRecoilState(headState);
+  const [hotelname, setHotelname] = useRecoilState(hotelState);
 
   const changeToggle = () => {
     setToggle((prev) => !prev);
@@ -30,7 +37,7 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
 
   const countMoney = () => {
     if (dayCnt == 0) {
-      setMoney(91200);
+      setMoney(roomInfo);
     } else if (dayCnt < 0) {
       setMoney(Math.abs(91200 * Math.abs(dayCnt)));
     } else if (dayCnt > 0) {
@@ -71,7 +78,15 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
     setPeoplToggle((prev) => !prev);
   };
 
-  const reservation = async () => {
+  const reservation = async() => {
+    await instance.post(`/reservation?id=${localStorage.getItem('user_id')}`, {
+      hotelname: hotelname,
+      room: headerItem
+    }).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err);
+    });
     alert("예약에 성공하였습니다.");
   };
 

@@ -2,23 +2,33 @@ import React, { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Container } from "./QrCode.style";
 import { instance } from "util/axios";
+import { useRecoilState } from "recoil";
+import { headState } from "store/header/headState";
+import { hotelState } from "store/hotel/hotelState";
 
 const QrCode = () => {
-  const [alert, setalert] = useState(true);
   const [qrValue, setQrValue] = useState("");
-  const [startDate, setstartDate] = useState("09월 01일 12시 30분");
-  const [endDate, setendDate] = useState("09월 03일 12시 30분");
+  const [startDate, setstartDate] = useState("10월 01일 12시 00분");
+  const [endDate, setendDate] = useState("10월 02일 24시 00분");
   const [time, setTime] = useState(15);
+  const [headerItem, setHeaderItem] = useRecoilState(headState);
+  const [hotelname, setHotelname] = useRecoilState(hotelState);
+  // const seed= process.env.REACT_APP_SEED;
+  const seed = 1234;
 
   const getQrCode = async() => {
-    await instance.get(`/barcord?id=${localStorage.getItem('user_id')}`)
+    await instance.get(`/getalpha?hotel=${hotelname}&room=${headerItem}`)
     .then((res) => {
-      console.log(res)
-      setQrValue(res.data.qr);
+      setQrValue(String(rand(Number(seed), Number(res.data.alpha))));
     }).catch((err) => {
       console.log(err)
     })
   }
+  const rand = (seed: number, alpha: number) => {
+    seed ^= seed << 13;
+    let t = seed ^ alpha ^ (seed >> 17) ^ (alpha >> 26);
+    return t + alpha
+  };
 
   useEffect(() => {
     setTimeout(() => {

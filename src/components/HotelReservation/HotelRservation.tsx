@@ -18,26 +18,28 @@ const HotelRservation = () => {
 
   const [HotelInfo, SetHotelInfo] = useState({
     img: "../../assets/image/Reservation/testHotel.png",
-    name: "나인트리 프리미어 호텔 명동 2",
+    hotelname: "신라호텔",
     location: "서울",
-    time: "체크인 15:00 ~ 체크아웃 21:00",
-    call: "02-6967-0999",
+    checkin: "12:00",
+    checkout: "24:00",
+    phoneNumber: "02-2222-2222",
   });
 
   const [roomInfo, setRoomInfo] = useState([
     {
       img: "../../assets/image/Reservation/hotelRoom1.png",
-      name: "스탠다드 트윈룸",
-      people: "2",
+      room: "2002호",
+      personnel: "2",
     }
   ]);
+
 
   const gethotel = async() => {
     await API.get(`/gethotel?hotel=${headerItem}`)
       .then((res) => {
-        console.log(res)
-        // SetHotelInfo(res.data.data)
-        // setRoomInfo(res.data.data)
+        console.log(res.data.data)
+        SetHotelInfo(res.data.data)
+        setRoomInfo([res.data.data])
       })
       .catch((err) => console.log(err))
   }
@@ -50,35 +52,35 @@ const HotelRservation = () => {
     <S.Container>
       <S.HotelInfo>
         <img src={testHotel} id="hotel" />
-        <h4>{HotelInfo.name}</h4>
+        <h4>{HotelInfo.hotelname}</h4>
         <S.TextContainer>
           <img src={GPS} alt="위치" />
           <p>{HotelInfo.location}</p>
         </S.TextContainer>
         <S.TextContainer>
           <img src={Time} alt="위치" />
-          <p>{HotelInfo.time}</p>
+          <p>체크인 {HotelInfo.checkin} ~ 체크아웃 {HotelInfo.checkout}</p>
         </S.TextContainer>
         <S.TextContainer>
           <img src={Call} alt="위치" />
-          <p>{HotelInfo.call}</p>
+          <p>{HotelInfo.phoneNumber}</p>
         </S.TextContainer>
       </S.HotelInfo>
 
       <div style={{ marginBottom: "40px" }}>
         <S.RoomContainer>
-          {roomInfo.map(({ img, name, people }, idx) => {
+          {roomInfo.map(({ img, room, personnel }, idx) => {
             return (
               <S.HotelContainer key={idx} onClick={() => {
-                                                          setHeaderItem(name)
+                                                          setHeaderItem(room)
                                                           navigate(`/reservation/:id/:room`)
                                                           }}>
                 <S.HotelRoomInfo>
-                  <img src={hotelRoom} id="hotel" alt={name} />
-                  <h2>{name}</h2>
+                  <img src={hotelRoom} id="hotel" alt={room} />
+                  <h2>{room}</h2>
                   <div>
                     <img src={Men} id="GPS" alt="위치" />
-                    <h3>{people}인</h3>
+                    <h3>{personnel}인</h3>
                   </div>
                 </S.HotelRoomInfo>
               </S.HotelContainer>
