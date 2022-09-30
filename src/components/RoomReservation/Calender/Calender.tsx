@@ -13,7 +13,7 @@ const Calender = ({ peopleCnt, roomInfo }: { peopleCnt: number[], roomInfo: stri
   const [end, setEnd] = useState(days.format("YYYY-MM-DD"));
   const [toggle, setToggle] = useState(false);
   const [dayCnt, setDayCnt] = useState(0);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(Number(roomInfo));
 
   const [headerItem, setHeaderItem] = useRecoilState(headState);
   const [hotelname, setHotelname] = useRecoilState(hotelState);

@@ -13,12 +13,13 @@ const QrCode = () => {
   const [time, setTime] = useState(15);
   const [headerItem, setHeaderItem] = useRecoilState(headState);
   const [hotelname, setHotelname] = useRecoilState(hotelState);
-  const seed= process.env.REACT_APP_SEED;
+  // const seed= process.env.REACT_APP_SEED;
+  const seed = 1234;
 
   const getQrCode = async() => {
     await instance.get(`/getalpha?hotel=${hotelname}&room=${headerItem}`)
     .then((res) => {
-      setQrValue(String(rand(Number(seed), Number(res.data.alpha))));
+      setQrValue(String(rand(Number(seed), Number(res.data.qr))));
     }).catch((err) => {
       console.log(err)
     })
