@@ -37,7 +37,7 @@ const Calender = ({ peopleCnt, roomInfo }: { peopleCnt: number[], roomInfo: stri
 
   const countMoney = () => {
     if (dayCnt == 0) {
-      setMoney(roomInfo);
+      setMoney(Number(roomInfo));
     } else if (dayCnt < 0) {
       setMoney(Math.abs(91200 * Math.abs(dayCnt)));
     } else if (dayCnt > 0) {
