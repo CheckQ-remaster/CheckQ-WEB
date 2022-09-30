@@ -16,7 +16,7 @@ const RoomReservation = () => {
   let stPeople: number[] = [];
   const makeStPeople = () => {
     // Number(roomInfo.people)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < Number(roomInfo.people); i++) {
       stPeople[i] = i + 1;
     }
 
