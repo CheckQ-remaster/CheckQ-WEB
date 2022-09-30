@@ -161,7 +161,7 @@ export const People = styled.div`
 `;
 
 export const PeopleContainer = styled.div`
-  width: 100%;
+  width: 303px;
   height: auto;
 
   margin-top: 28px;
@@ -196,4 +196,38 @@ export const PeopleCnt = styled.button`
     color: white;
     background-color: #2b42bb;
   }
+`;
+
+export const totalWrap = styled.div`
+  text-align: center;
+
+  h3 {
+    margin: 40px 0 14px 0;
+
+    color: #000000;
+    font-size: 24px;
+  }
+
+  h4 {
+    margin: 0;
+    color: #2B42BB;
+    font-size: 30px;
+  }
+`;
+
+
+export const ReservationBtn = styled.button`
+  width: 303px;
+  height: 52px;
+
+  margin: 40px 0 120px 0;
+
+  background: #2B42BB;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+
+  color: #FFFFFF;
+  font-size: 18px;
 `;

@@ -109,7 +109,10 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
             <S.PeopleContainer>
               {peopleCnt.map((v) => {
                 return (
-                  <S.PeopleCnt key={v} onClick={changePeopleToggle}>
+                  <S.PeopleCnt key={v} onClick={() => {
+                                                  changePeopleToggle()
+                                                  setPeople(v)
+                                                }}>
                     {v}인
                   </S.PeopleCnt>
                 );
@@ -123,6 +126,11 @@ const Calender = ({ peopleCnt }: { peopleCnt: number[] }) => {
           )}
         </>
       )}
+      <S.totalWrap>
+        <h3>총액</h3>
+        <h4>91,200원</h4>
+      </S.totalWrap>
+      <S.ReservationBtn>예약하기</S.ReservationBtn>
     </>
   );
 };

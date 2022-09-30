@@ -8,7 +8,7 @@ import men from "../../assets/image/Reservation/men.png";
 const RoomReservation = () => {
   const [roomInfo, setRoomInfo] = useState({
     img: "../../assets/image/Reservation/hotelRoom1.png",
-    name: "나인트리 프리미어 호텔 명동 2",
+    name: "나인트리 프리미어 호텔",
     people: "2",
     price: "91,200",
   });
