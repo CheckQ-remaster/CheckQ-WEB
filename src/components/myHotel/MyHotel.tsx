@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Btn, InputWrapper } from "styles/them.style";
 import { Container, SInputWrapper, SmallBox, ImgInputWrap } from "./MyHotel.style";
@@ -8,6 +8,8 @@ import AddRoom from "./addRoom/AddRoom";
 import { instance } from "util/axios";
 import { useRecoilState } from "recoil";
 import { headState } from "store/header/headState";
+import { hotelState } from "store/hotel/hotelState";
+import axios from "axios";
 
 interface Inputs {
   hotel_name: string;
@@ -26,6 +28,7 @@ interface Inputs {
 const MyHotel = () => {
   const [imgPreview, setImgPreview] = useState("");
   const [headerItem, setHeaderItem] = useRecoilState(headState);
+  const [hotelname, setHotelName] = useState(hotelState);
 
   const {
     register,
@@ -34,45 +37,68 @@ const MyHotel = () => {
     formState: { errors },
   } = useForm<Inputs>();
   const hotel_image = watch("hotel_image");
+  let userId = localStorage.getItem("user_id");
 
-  const onSubmit: SubmitHandler<Inputs> = async(data) => {
-    alert('등록에 성공하였습니다.')
-    // const hotelFormData = new FormData();
-    // const roomFormData = new FormData();
-    // hotelFormData.append("image", data.hotel_image);
-    // roomFormData.append("room_image", data.room_image);
-    // try {     
-      // if(data.hotel_name) {
-      //   await instance.post('/addhotel', {
-      //     hotel: data.hotel_name,
-      //   })
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    alert("등록에 성공하였습니다.");
+
+    const hotelFormData = new FormData();
+    const roomFormData = new FormData();
+    hotelFormData.append("image", data.hotel_image);
+    roomFormData.append("room_image", data.room_image);
+
+    try {
+      if (data.hotel_name) {
+        await instance.post(`/addhotel`, {
+          room: data.room_name,
+          personnel: data.people_number,
+          price: data.price,
+          hotelname: data.hotel_name,
+          phoneNumber: data.phone_number,
+          location: data.address,
+          checkin: data.checkIn,
+          checkout: data.checkOut,
+        });
+
+        // axios.post(
+        //   `/addhotel`,
+        //   { hotel: data.hotel_name },
+        //   {
+        //     headers: {
+        //       id: `${useId}`,
+        //     },
+        //   }
+        // );
+      }
+      // if (data.hotel_image) {
+      //   // await instance.post(`/uploadimg?${data.hotel_name}`, hotelFormData);
+      //   await axios({
+      //     method: "post",
+      //     url: `/uploadimg?${data.hotel_name}`,
+      //     data: hotelFormData,
+      //   });
+
+      //   // axios.post(`/uploadimg?${data.hotel_name}`, data.hotel_image);
       // }
-      // if(data.hotel_image){
-      //   await instance.post('uploadimg', hotelFormData, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data',
-      //       'hotel': data.hotel_name
-      //     }
-      //   })
-      // }
-      // if(data.room_name) {
-      //   await instance.post('/addroom', {
+
+      // if (data.room_name) {
+      //   await instance.post("/addroom", {
       //     room: data.room_name,
       //     price: data.price,
-      //     personnel: data.people_number
-      //   })
+      //     personnel: data.people_number,
+      //   });
       // }
-      // if(data.room_image) {
-      //   await instance.post('/room_image', roomFormData, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data'
-      //     }
-      //   })
-      // }
-    // } catch(err) {
-    //   console.log(err)
-    // }
-  }
+      if (data.room_image) {
+        await instance.post("/room_image", roomFormData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     if (hotel_image && hotel_image.length > 0) {
@@ -82,8 +108,8 @@ const MyHotel = () => {
   }, [hotel_image]);
 
   useEffect(() => {
-    setHeaderItem('호텔 등록')
-  }, [setHeaderItem])
+    setHeaderItem("호텔 등록");
+  }, [setHeaderItem]);
 
   return (
     <Container>
